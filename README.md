@@ -160,3 +160,29 @@ https://cloudfront-nagaraj-static-site-123.cloudfront.net
 - Wait for CloudFront deployment (5–10 minutes)
 
 ---
+
+## 📸 Screenshots
+
+### 🔹 1. S3 Bucket Creation
+![S3 Bucket](screenshots/s3-bucket.png)
+
+### 🔹 2. Disabled Block Public Access
+![Block Public Access Disabled](screenshots/disabled-block-public-access.png)
+
+### 🔹 3. Upload HTML & CSS Files
+![Upload Files](screenshots/upload-html-css-files.png)
+
+### 🔹 4. Static Website Hosting Enabled
+![Static Hosting](screenshots/static-hosting-enabled.png)
+
+### 🔹 5. Bucket Policy Configuration
+![Bucket Policy](screenshots/bucket-policy.png)
+
+### 🔹 6. Website Access using S3 URL
+![S3 URL Access](screenshots/website-access-using-s3-url.png)
+
+### 🔹 7. CloudFront Distribution
+![CloudFront](screenshots/cloudfront-distribution.png)
+
+### 🔹 8. Final Website Output
+![Final Output](screenshots/final-output.png)
