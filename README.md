@@ -10,7 +10,7 @@ The website is publicly accessible via CloudFront and uses S3 as the origin for 
 
 🧱 Architecture
 
-User → CloudFront (CDN) → S3 Bucket (Static Website Hosting)
+User → CloudFront (cloudfront-nagaraj-static-site-123) → S3 Bucket (nagaraj-static-site-123)
 
 ---
 
@@ -34,7 +34,7 @@ Login to the AWS Management Console using your credentials.
 
 - Navigate to S3
 - Click Create bucket
-- Enter a unique bucket name (e.g., "nagaraj-static-site")
+- Enter bucket name: nagaraj-static-site-123
 - Select region (e.g., ap-south-1)
 - Click Create bucket
 
@@ -55,9 +55,9 @@ Login to the AWS Management Console using your credentials.
 - Go to Objects tab
 - Click Upload
 - Upload:
-  - "index.html"
-  - "style.css"
-  - "error.html"
+  - index.html
+  - style.css
+  - error.html
 - Click Upload
 
 ---
@@ -69,15 +69,15 @@ Login to the AWS Management Console using your credentials.
 - Click Edit
 - Enable hosting
 - Set:
-  - Index document: "index.html"
-  - Error document: "error.html"
+  - Index document: index.html
+  - Error document: error.html
 - Save changes
 
 ---
 
 🔹 Step 6: Add Bucket Policy for Public Access
 
-Replace "YOUR-BUCKET-NAME" with your actual bucket name and add the following policy:
+Replace with your bucket name:
 
 {
   "Version": "2012-10-17",
@@ -87,7 +87,7 @@ Replace "YOUR-BUCKET-NAME" with your actual bucket name and add the following po
       "Effect": "Allow",
       "Principal": "*",
       "Action": "s3:GetObject",
-      "Resource": "arn:aws:s3:::YOUR-BUCKET-NAME/*"
+      "Resource": "arn:aws:s3:::nagaraj-static-site-123/*"
     }
   ]
 }
@@ -98,17 +98,25 @@ Replace "YOUR-BUCKET-NAME" with your actual bucket name and add the following po
 
 - Navigate to CloudFront
 - Click Create Distribution
+- Distribution name: cloudfront-nagaraj-static-site-123
 
 ---
 
 🔹 Step 8: Configure Origin
 
-- In Origin Domain, select your S3 bucket
-- Choose appropriate origin type:
-  - S3 bucket OR
-  - S3 static website endpoint
+- In Origin Domain, select:
+  
+  - nagaraj-static-site-123.s3.amazonaws.com
+    OR
+  - S3 static website endpoint (if using website hosting)
+
 - Set Viewer Protocol Policy to:
+  
   - Redirect HTTP to HTTPS
+
+- (Optional but recommended)
+  
+  - Set Default Root Object: index.html
 
 ---
 
@@ -118,7 +126,7 @@ Replace "YOUR-BUCKET-NAME" with your actual bucket name and add the following po
 - Copy CloudFront domain name
 - Open in browser:
 
-https://your-distribution-name.cloudfront.net
+https://cloudfront-nagaraj-static-site-123.cloudfront.net
 
 ---
 
@@ -138,11 +146,17 @@ https://your-distribution-name.cloudfront.net
 - Check bucket policy
 - Ensure public access is enabled
 
+---
+
 ❌ Website Not Loading
 
-- Verify "index.html" exists
+- Verify index.html exists
 - Check Default Root Object in CloudFront
+
+---
 
 ❌ Delay in Website Availability
 
 - Wait for CloudFront deployment (5–10 minutes)
+
+---
